@@ -1,15 +1,39 @@
-import React from "react";
-import {SafeAreaView, View, Text} from "react-native";
+import Axios from "axios";
+import React, {useState, useEffect} from "react";
+import {SafeAreaView, View, Text, FlatList} from "react-native";
+
+import { JobItem } from "../components"
 
 const Jobs = (props) => {
 
+    const [data, setData] = useState([]);
     const {selectedLanguage} = props.route.params;
+
+    const fetchData = async () => {
+        const response = await Axios.get(`https://jobs.github.com/positions.json?search=${selectedLanguage.toLowerCase()}`
+        );
+        setData(response.data);
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const renderJobs = ({item}) => <JobItem job={item}/>
 
     return(
         <SafeAreaView>
             <View>
-                <Text>JOBS</Text>
-                <Text>{selectedLanguage}</Text>
+                <Text style={{
+                    fontWeight:"bold",
+                    textAlign:"center",
+                    color:"red",
+                    fontSize:20
+                    }}>JOBS FOR {selectedLanguage.toUpperCase()} </Text>
+                <FlatList
+                    data={data}
+                    renderItem={renderJobs}
+                />
             </View>
         </SafeAreaView>
 

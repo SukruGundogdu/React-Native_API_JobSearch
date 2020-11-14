@@ -24,3 +24,16 @@ export const introduction = StyleSheet.create({
         fontWeight: "bold"
     }
 })
+
+export const jobItem = StyleSheet.create({
+    container: {
+        padding: 12,
+        margin: 7,
+        borderRadius: 6,
+        borderWidth: 1,
+        borderColor: "#bdbdbd"
+    },
+    text: {
+        fontWeight: "bold"
+    }
+})
