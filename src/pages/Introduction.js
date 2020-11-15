@@ -67,15 +67,10 @@ const Introduction = (props) => {
                 <Text style={introduction.bannerText} >Aradığınız dili seçiniz</Text>
               </View>
 
-                <ScrollView
-                  horizontal
-                  contentContainerStyle={{ alignItems: "center" }}
-                >
-                  {
-                    topics.map((t) => {
+                <ScrollView horizontal contentContainerStyle={{ alignItems: "center" }}>
+                  {topics.map((t) => {
                       return <TopicItem key={t.id} item={t} onSelect={() => selectLanguage(t.name)}/>
-                    })
-                  }
+                    })}
                 </ScrollView>
             </View>
         </SafeAreaView>
