@@ -49,6 +49,6 @@ export const jobs = StyleSheet.create({
         fontWeight: "bold"
     },
     jobDesc: {
-        padding: 5
+        height: Dimensions.get("window").height / 2
     }
 })
